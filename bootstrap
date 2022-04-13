@@ -146,6 +146,15 @@ if [ -z "$NO_CLOBBER" ] || [ ! -e $VENV ]; then
     python3 -m venv $VENV
 fi
 
+# It is impossible to upgrade ansible from 2.9 to 2.10 via pip.
+# See https://docs.ansible.com/ansible/devel/porting_guides/porting_guide_2.10.html#known-issues
+if [ -f "$VENV/bin/ansible" ]; then
+    ansible_version=$(pip list --format json | python3 -c "import sys; import json; print(list(filter(lambda i: i['name'] == 'ansible', json.loads(sys.stdin.read())))[0]['version'])" | grep ^2.9)
+    if [ -n "$ansible_version" ]; then
+        pip uninstall -y ansible
+    fi
+fi
+
 # First, upgrade pip
 $VENV/bin/pip install --upgrade pip
 
