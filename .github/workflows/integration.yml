@@ -10,3 +10,8 @@ jobs:
       - name: Test using docker-compose
         run: ./start.sh
         working-directory: ./docs/docker-compose
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ansible
+          path: |
+            /archive_dir/**/ansible*.*
