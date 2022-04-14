@@ -11,7 +11,8 @@ jobs:
         run: ./start.sh
         working-directory: ./docs/docker-compose
       - uses: actions/upload-artifact@v3
+        if: failure()
         with:
           name: ansible
           path: |
-            /archive_dir/**/ansible*.*
+            /archive_dir/**/ansible*
