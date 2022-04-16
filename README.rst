@@ -3,7 +3,7 @@
 ===================================================
 
 
-Welcome! Teuthology's documentation is primarily hosted at `docs.ceph.com
+Welcome Teuthology's documentation is primarily hosted at `docs.ceph.com
 <https://docs.ceph.com/projects/teuthology/>`__.
 
 You can also look at docs `inside this repository <docs/>`__, but note that
